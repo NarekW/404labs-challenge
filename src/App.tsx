@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import "./App.scss";
 import RegistrationPage from "./components/RegistrationPage/RigristationPage";
+import TodoListPage from "./components/TodosListPage/TodoListPage";
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
           <Route exact path="/">
             <Redirect to="/registration" />
           </Route>
-          <Route path="/registration">
+          <Route exact path="/registration">
             <RegistrationPage />
+          </Route>
+          <Route exact path="/profile/todo-list">
+            <TodoListPage />
           </Route>
         </Switch>
       </Router>

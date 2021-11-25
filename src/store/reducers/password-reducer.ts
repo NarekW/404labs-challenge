@@ -7,7 +7,7 @@ const initialState = {
 export default function passwordReducer(state = initialState, action: any) {
   switch (action.type) {
     case SET_PASSWORD:
-      return { password: action.value };
+      return action.value;
     default:
       return state;
   }

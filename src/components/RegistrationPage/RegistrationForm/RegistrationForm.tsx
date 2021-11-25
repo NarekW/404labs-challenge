@@ -9,24 +9,21 @@ export default class RegistrationForm extends React.Component<RegProps> {
   render() {
     const {
       email,
-      repeat_password,
+      password_repeat,
       password,
       onChangeEmailAdress,
       onChangePassword,
       onChangeRepeatPassword,
-      onLoading,
+      loading,
+      error,
     } = this.props;
     return (
       <div className={styles.formContainer}>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            onLoading();
-          }}
-        >
+        <form onSubmit={this.props.onSubmith}>
           <div className={`${styles.container}`}>
-            <h1>Register</h1>
+            <h1>Register 404labs challenge</h1>
             <p>Please fill in this form to create an account.</p>
+            <p style={{ color: "red" }}>{error}</p>
             <label htmlFor="email">
               <b className={`${styles.lb}`}>Email</b>
             </label>
@@ -41,7 +38,6 @@ export default class RegistrationForm extends React.Component<RegProps> {
               autoComplete="on"
               required
             />
-
             <label htmlFor="psw">
               <b className={`${styles.lb}`}>Password</b>
             </label>
@@ -67,7 +63,7 @@ export default class RegistrationForm extends React.Component<RegProps> {
               name="password-repeat"
               id="password-repeat"
               onChange={onChangeRepeatPassword}
-              defaultValue={repeat_password}
+              defaultValue={password_repeat}
               autoComplete="on"
               required
             />
@@ -77,10 +73,9 @@ export default class RegistrationForm extends React.Component<RegProps> {
               <a href="/#">Terms & Privacy</a>.
             </p>
             <button type="submit" className={`${styles.registerbtn}`}>
-              Register
+              {loading ? "Loading..." : "Register"}
             </button>
           </div>
-
           <div className={`${styles.container} ${styles.signin}`}>
             <p>
               Already have an account? <a href="/#">Sign in</a>.

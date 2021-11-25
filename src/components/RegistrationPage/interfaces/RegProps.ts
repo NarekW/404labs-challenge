@@ -1,9 +1,13 @@
 export default interface RegProps {
   email?: string;
   password?: string;
-  repeat_password?: string;
+  password_repeat?: string;
   onChangeEmailAdress?: any;
   onChangePassword?: any;
   onChangeRepeatPassword?: any;
+  onSubmith?: any;
   onLoading?: any;
+  loading?: any;
+  error?: any;
+  onError?: any;
 }

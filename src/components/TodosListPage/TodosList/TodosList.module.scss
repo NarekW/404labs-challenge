@@ -1,0 +1,17 @@
+.tasksBlock {
+}
+.tasksContainer {
+  padding: 10px;
+  ul {
+    list-style-type: none;
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      div {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+  }
+}

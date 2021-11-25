@@ -5,6 +5,6 @@ export const Loading = () => {
     dispatch(loadingActionCreator(true));
     setTimeout(() => {
       dispatch(loadingActionCreator(false));
-    }, 5000);
+    }, 1000);
   };
 };
