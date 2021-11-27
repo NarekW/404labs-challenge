@@ -5,6 +5,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import "./App.scss";
+import LoginPage from "./components/LoginPage/LoginPage";
 import RegistrationPage from "./components/RegistrationPage/RigristationPage";
 import TodoListPage from "./components/TodosListPage/TodoListPage";
 
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/registration">
             <RegistrationPage />
+          </Route>
+          <Route exact path="/login">
+            <LoginPage />
           </Route>
           <Route exact path="/profile/todo-list">
             <TodoListPage />

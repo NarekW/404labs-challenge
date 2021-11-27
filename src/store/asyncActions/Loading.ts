@@ -1,6 +1,6 @@
 import loadingActionCreator from "../actionCreators/loadingActionCreator";
 
-export const Loading = () => {
+export const loading = () => {
   return function (dispatch: any) {
     dispatch(loadingActionCreator(true));
     setTimeout(() => {

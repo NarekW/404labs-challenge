@@ -5,31 +5,27 @@ import errorActionCreator from "../../store/actionCreators/errorActionCreator";
 import passwordActionCreator from "../../store/actionCreators/passwordActionCreator";
 import passwordRepeatActionCreator from "../../store/actionCreators/passwordRepeatActionCreator";
 import { loading } from "../../store/asyncActions/loading";
-import RegProps from "./interfaces/RegProps";
-import RegistrationForm from "./RegistrationForm/RegistrationForm";
+import LogProps from "./interfaces/LogProps";
+import RegistrationForm from "./LoginForm/LoginForm";
 
-class RegistrationPage extends React.Component<RegProps> {
+class LoginPage extends React.Component<LogProps> {
   onSubmith = (e: any) => {
     e.preventDefault();
     this.props.onLoading();
     this.props.onError("");
+
     try {
       const checkuserInfo: any = window.localStorage.getItem("userData");
-      const userData: RegProps = {
-        email: this.props.email,
-        password: this.props.password,
-      };
 
+      if (!checkuserInfo) {
+        this.props.onError("This account is not registered");
+      }
       if (
-        checkuserInfo &&
-        JSON.parse(checkuserInfo).email &&
-        JSON.parse(checkuserInfo).email === this.props.email
+        this.props.password !== JSON.parse(checkuserInfo).password ||
+        this.props.email !== JSON.parse(checkuserInfo).email
       ) {
-        this.props.onError("This email address is already taken");
-      } else if (this.props.password !== this.props.password_repeat) {
-        this.props.onError("Password mismatch");
+        this.props.onError("wrong password or email");
       } else {
-        window.localStorage.setItem("userData", JSON.stringify(userData));
         window.location.pathname = "/profile/todo-list";
       }
     } catch (error) {
@@ -96,4 +92,4 @@ const mapDispatchToProps = function (dispatch: any) {
     },
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

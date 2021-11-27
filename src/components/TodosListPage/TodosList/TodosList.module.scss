@@ -1,5 +1,3 @@
-.tasksBlock {
-}
 .tasksContainer {
   padding: 10px;
   ul {
@@ -13,5 +11,11 @@
         align-items: flex-end;
       }
     }
+  }
+}
+.buttonsContainer {
+  padding: 10px;
+  button {
+    margin: 10px;
   }
 }

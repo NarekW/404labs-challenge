@@ -3,4 +3,9 @@ export default interface TodosProps {
   addTodos?: any;
   onChangeAddTodosInput?: any;
   addTodosInputValue?: any;
+  deleteTodos?: any;
+  onChangeComplitedCheckBox: any;
+  onChangeSearchTodosInput: any;
+  sortByDateHalder: any;
+  sortByNameHandler: any;
 }

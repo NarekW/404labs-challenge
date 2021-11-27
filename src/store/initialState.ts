@@ -1,3 +1,6 @@
+const stateInLocalStorage: any =
+  window.localStorage.getItem("todos") ||
+  window.localStorage.setItem("todos", JSON.stringify([]));
 export let initialState: any = {
   email: "",
   password: "",
@@ -5,26 +8,5 @@ export let initialState: any = {
   loading: false,
   error: "",
   addTodosInputValue: "",
-  todos: [
-    {
-      id: Math.floor(Math.random() * 10),
-      text: "My task 2",
-      completed: false,
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      text: "My task 3",
-      completed: false,
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      text: "My task 5",
-      completed: false,
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      text: "My task 8",
-      completed: false,
-    },
-  ],
+  todos: JSON.parse(stateInLocalStorage),
 };

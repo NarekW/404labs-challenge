@@ -1,82 +1,51 @@
 import React from "react";
 import styles from "./TodosList.module.scss";
-import Button from "@mui/material/Button";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import TodosProps from "../interfaces/TodosProps";
-
-const Todos = (props: any) => {
-  return (
-    <li>
-      <div>
-        <p>{props.body.text}</p>
-      </div>
-      <div>
-        {" "}
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={props.body.completed} />}
-            label="Complited"
-          />
-        </FormGroup>
-        <Button type="submit" variant="contained">
-          delete
-        </Button>
-      </div>
-    </li>
-  );
-};
-
-const SearchBar = (props: any) => {
-  return (
-    <form action="">
-      <div className={styles.tasksBlock}>
-        <span>search</span> <input type="text" placeholder="search task" />
-        <Button type="submit" variant="contained">
-          search tasks
-        </Button>
-      </div>
-    </form>
-  );
-};
-
-const AddTaskBar = (props: any) => {
-  return (
-    <form
-      onSubmit={(event) => {
-        const newTodoText = props.addTodosInputValue;
-        event.preventDefault();
-        props.addTodos(newTodoText);
-      }}
-    >
-      <div className={styles.tasksBlock}>
-        <span>add task</span>
-        <input
-          onChange={props.onChangeAddTodosInput}
-          type="text"
-          value={props.addTodosInputValue}
-          placeholder="add task"
-        />
-        <Button type="submit" variant="contained">
-          add task
-        </Button>
-      </div>
-    </form>
-  );
-};
+import AddTaskBar from "./AddTaskBar/AddTaskBar";
+import Todos from "./Todos/Todos";
+import SearchBar from "./SearchBar/SearchBar";
+import Button from "@mui/material/Button";
 
 export default class TodosList extends React.Component<TodosProps> {
   render() {
-    const { todos, addTodos, onChangeAddTodosInput, addTodosInputValue } =
-      this.props;
+    const {
+      todos,
+      addTodos,
+      onChangeAddTodosInput,
+      sortByNameHandler,
+      addTodosInputValue,
+      onChangeComplitedCheckBox,
+      deleteTodos,
+      onChangeSearchTodosInput,
+      sortByDateHalder,
+    } = this.props;
+
     return (
       <section className={styles.tasksContainer}>
-        <SearchBar />
+        <SearchBar onChangeSearchTodosInput={onChangeSearchTodosInput} />
+        <div className={styles.buttonsContainer}>
+          <Button variant="contained" onClick={sortByNameHandler} size="small">
+            Sort by name
+          </Button>
+          <Button variant="contained" onClick={sortByDateHalder} size="small">
+            Sort by date
+          </Button>
+        </div>
         <ul>
-          {todos.map((el: any) => {
-            return <Todos body={el} />;
-          })}
+          {todos ? (
+            todos.map((el: any, idx: number) => {
+              return (
+                <Todos
+                  body={el}
+                  key={idx}
+                  deleteTodos={deleteTodos}
+                  onChangeComplitedCheckBox={onChangeComplitedCheckBox}
+                />
+              );
+            })
+          ) : (
+            <p>No tasks found</p>
+          )}
         </ul>
         <AddTaskBar
           onChangeAddTodosInput={onChangeAddTodosInput}

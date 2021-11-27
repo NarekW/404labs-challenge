@@ -1,7 +1,7 @@
 import { SET_PASSWORD } from "../actions/passwordAction";
 
 const initialState = {
-  password: "Enter password !!!",
+  password: "",
 };
 
 export default function passwordReducer(state = initialState, action: any) {
