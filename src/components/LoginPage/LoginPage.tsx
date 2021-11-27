@@ -4,7 +4,7 @@ import emailActionCreator from "../../store/actionCreators/emailActionCreator";
 import errorActionCreator from "../../store/actionCreators/errorActionCreator";
 import passwordActionCreator from "../../store/actionCreators/passwordActionCreator";
 import passwordRepeatActionCreator from "../../store/actionCreators/passwordRepeatActionCreator";
-import { loading } from "../../store/asyncActions/loading";
+import { loading } from "../../store/asyncActions/myLoading";
 import LogProps from "./interfaces/LogProps";
 import RegistrationForm from "./LoginForm/LoginForm";
 
